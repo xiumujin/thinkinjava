@@ -1,11 +1,5 @@
-package singleton;
+package singleton.expansion;
 
-/**
- * 功能说明: <br>
- * 系统版本: v1.0<br>
- * 开发人员: pengxin19536@hundsun.com<br>
- * 开发时间: 2019年03月09日<br>
- */
 public class MultitonTest {
 
     @org.testng.annotations.BeforeMethod

@@ -1,4 +1,4 @@
-package singleton;
+package singleton.expansion;
 
 import java.util.ArrayList;
 import java.util.List;
