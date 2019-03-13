@@ -3,8 +3,9 @@ package proxy;
 import java.lang.reflect.Proxy;
 
 /**
+ * JDK实现代理只需要使用newProxyInstance方法,但是该方法需要接收三个参数
  * 创建动态代理对象
- * 动态代理不需要实现接口,但是需要指定接口类型
+ * JDK实现代理动态代理不需要实现接口,但是需要指定接口类型
  */
 public class ProxyFactory {
     //维护一个目标对象
