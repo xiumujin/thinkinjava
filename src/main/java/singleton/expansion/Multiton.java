@@ -15,16 +15,16 @@ public class Multiton {
 
     private static int maxNum = 5;
 
-    private int number;
-
-    private Multiton(int number) {
-        this.number = number;
-    }
-
     static {
         for (int i = 0; i < maxNum; i++) {
             list.add(new Multiton(i));
         }
+    }
+
+    private int number;
+
+    private Multiton(int number) {
+        this.number = number;
     }
 
     public static Multiton getInstance() {

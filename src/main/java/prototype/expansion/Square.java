@@ -1,7 +1,5 @@
 package prototype.expansion;
 
-import java.util.Scanner;
-
 class Square implements Shape {
     public Object clone() {
         Square b = null;

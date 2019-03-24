@@ -1,5 +1,10 @@
 package decorator;
 
+//抽象构件角色
+interface Component {
+    void operation();
+}
+
 public class DecoratorPattern {
     public static void main(String[] args) {
         Component p = new ConcreteComponent();
@@ -8,11 +13,6 @@ public class DecoratorPattern {
         Component d = new ConcreteDecorator(p);
         d.operation();
     }
-}
-
-//抽象构件角色
-interface Component {
-    public void operation();
 }
 
 //具体构件角色

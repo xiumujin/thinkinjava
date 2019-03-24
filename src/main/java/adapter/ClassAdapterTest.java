@@ -2,7 +2,7 @@ package adapter;
 
 //目标接口
 interface Target {
-    public void request();
+    void request();
 }
 
 //适配者接口

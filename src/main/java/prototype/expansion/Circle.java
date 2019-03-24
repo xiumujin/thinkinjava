@@ -1,7 +1,5 @@
 package prototype.expansion;
 
-import java.util.Scanner;
-
 class Circle implements Shape {
     public Object clone() {
         Circle w = null;

@@ -1,5 +1,10 @@
 package bridge;
 
+//实现化角色
+interface Implementor {
+    void OperationImpl();
+}
+
 //扩展抽象化角色
 public class RefinedAbstraction extends Abstraction {
     protected RefinedAbstraction(Implementor imple) {
@@ -10,11 +15,6 @@ public class RefinedAbstraction extends Abstraction {
         System.out.println("扩展抽象化(Refined Abstraction)角色被访问");
         imple.OperationImpl();
     }
-}
-
-//实现化角色
-interface Implementor {
-    public void OperationImpl();
 }
 
 //具体实现化角色

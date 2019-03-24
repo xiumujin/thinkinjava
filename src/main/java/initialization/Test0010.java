@@ -1,9 +1,9 @@
 package initialization;
 
 class Singleton1 {
-    private static Singleton1 singleton = new Singleton1();
-    public static int counter1=3;
+    public static int counter1 = 3;
     public static int counter2 = 2;
+    private static Singleton1 singleton = new Singleton1();
 
     public Singleton1() {
         counter1++;
@@ -33,11 +33,11 @@ class Singleton2 {
 public class Test0010 {
     public static void main(String[] args) {
         Singleton1 singleton1 = Singleton1.getInstance();
-        System.out.println(singleton1.counter1);
-        System.out.println(singleton1.counter2);
+        System.out.println(Singleton1.counter1);
+        System.out.println(Singleton1.counter2);
         Singleton2 singleton2 = Singleton2.getInstance();
-        System.out.println(singleton2.counter1);
-        System.out.println(singleton2.counter2);
+        System.out.println(Singleton2.counter1);
+        System.out.println(Singleton2.counter2);
     }
 }
 

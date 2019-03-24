@@ -3,6 +3,11 @@ package bridge;
 import javax.swing.*;
 import java.awt.*;
 
+//实现化角色：颜色
+interface Color {
+    String getColor();
+}
+
 public class BagManage {
     public static void main(String[] args) {
         Color color;
@@ -27,11 +32,6 @@ public class BagManage {
         jf.setVisible(true);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-}
-
-//实现化角色：颜色
-interface Color {
-    String getColor();
 }
 
 //具体实现化角色：黄色
