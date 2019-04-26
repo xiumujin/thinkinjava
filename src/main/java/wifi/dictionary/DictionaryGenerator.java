@@ -1,4 +1,4 @@
-package wifi;
+package wifi.dictionary;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -18,7 +18,7 @@ import java.io.InputStreamReader;
  *
  * @author 冰河
  */
-public class DictionarySeek {
+public class DictionaryGenerator {
 
 
     //密码可能会包含的字符集合

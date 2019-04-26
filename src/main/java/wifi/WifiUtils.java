@@ -1,46 +1,20 @@
 package wifi;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static wifi.CmdExecutor.execute;
+
 public class WifiUtils {
-    /**
-     * 执行器
-     *
-     * @param cmd      CMD命令
-     * @param filePath 需要在哪个目录下执行
-     */
-    private static List<String> execute(String cmd, String filePath) {
-        Process process = null;
-        List<String> result = new ArrayList<>();
-        try {
-            if (filePath != null) {
-                process = Runtime.getRuntime().exec(cmd, null, new File(filePath));
-            } else {
-                process = Runtime.getRuntime().exec(cmd);
-            }
-            BufferedReader bReader = new BufferedReader(new InputStreamReader(process.getInputStream(), "gbk"));
-            String line = null;
-            while ((line = bReader.readLine()) != null) {
-                result.add(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
+
 
     /**
      * 列出所有信号较好的ssid
      *
      * @return 所有ssid
      */
-    public static List<WiFiInfo> listWiFiInfo() {
-        List<WiFiInfo> wiFiInfos = new ArrayList<>();
+    public static List<SsidInfo> listWiFiInfo() {
+        List<SsidInfo> wiFiInfos = new ArrayList<>();
         String cmd = Command.SHOW_NETWORKS;
         List<String> results = execute(cmd, null);
         if (results != null && results.size() > 0) {
@@ -57,11 +31,14 @@ public class WifiUtils {
      *
      * @param profileName 添加配置文件
      */
-    private static boolean addProfile(String profileName) {
+    public static boolean addProfile(String profileName) {
         String cmd = Command.ADD_PROFILE.replace("FILE_NAME", profileName);
-        List<String> result = execute(cmd, Connector.PROFILE_TEMP_PATH);
-        if (result != null && result.size() > 0) {
-            return result.get(0).contains("添加到接口");
+        List<String> results = execute(cmd, Connector.PROFILE_TEMP_PATH);
+        if (results != null && results.size() > 0) {
+            for (String result : results) {
+                System.out.println(result);
+            }
+            return results.get(0).contains("添加到接口");
         }
         return false;
     }
@@ -71,12 +48,15 @@ public class WifiUtils {
      *
      * @param ssid 添加配置文件
      */
-    private static boolean connect(String ssid) {
+    public static boolean connect(String ssid) {
         boolean connected = false;
-        String cmd = Command.CONNECT.replace("SSID_NAME", ssid);
-        List<String> result = execute(cmd, null);
-        if (result != null && result.size() > 0) {
-            if (result.get(0).contains("已成功完成")) {
+        String cmd = Command.CONNECT.replace("SSID_NAME", "\"" + ssid + "\"");
+        List<String> results = execute(cmd, null);
+        if (results != null && results.size() > 0) {
+            for (String result : results) {
+                System.out.println(result);
+            }
+            if (results.get(0).contains("已成功完成")) {
                 connected = true;
             }
         }
@@ -86,7 +66,7 @@ public class WifiUtils {
     /**
      * ping 校验
      */
-    private static boolean ping() {
+    public static boolean ping() {
         boolean pinged = false;
         String cmd = "ping " + Connector.PING_DOMAIN;
         List<String> result = execute(cmd, null);
@@ -94,10 +74,12 @@ public class WifiUtils {
             for (String item : result) {
                 if (item.contains("来自")) {
                     pinged = true;
-                    break;
+
                 }
+                System.out.println(item);
             }
         }
+        System.out.println("ping:" + pinged);
         return pinged;
     }
 
