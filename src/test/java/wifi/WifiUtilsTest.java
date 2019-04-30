@@ -32,8 +32,7 @@ public class WifiUtilsTest {
 
     @Test
     public void testConnect() {
-        ProfileGenerator profileGenerator = new ProfileGenerator();
-        profileGenerator.genProfile("HUAWEI P20 Pro", "95369536", Connector.PROFILE_TEMP_PATH, "HUAWEI_P20_Pro.xml");
+        ProfileGenerator.genProfile("HUAWEI P20 Pro", "95369536", Connector.PROFILE_TEMP_PATH, "HUAWEI_P20_Pro.xml");
         WifiUtils.addProfile("HUAWEI_P20_Pro.xml");
         WifiUtils.connect("HUAWEI P20 Pro");
         WifiUtils.ping();
