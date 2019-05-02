@@ -17,11 +17,7 @@ public class WifiUtilsTest {
 
     @Test
     public void testListSsid() {
-        WifiUtils.listWiFiInfo();
-    }
-
-    @Test
-    public void testCheck() {
+        WifiUtils.listSsidInfo();
     }
 
     @Test
@@ -36,5 +32,10 @@ public class WifiUtilsTest {
         WifiUtils.addProfile("HUAWEI_P20_Pro.xml");
         WifiUtils.connect("HUAWEI P20 Pro");
         WifiUtils.ping();
+    }
+
+    @Test
+    public void testCheck() {
+
     }
 }

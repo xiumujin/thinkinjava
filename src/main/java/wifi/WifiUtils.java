@@ -1,5 +1,7 @@
 package wifi;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,17 +15,20 @@ public class WifiUtils {
      *
      * @return 所有ssid
      */
-    public static List<SsidInfo> listWiFiInfo() {
-        List<SsidInfo> wiFiInfos = new ArrayList<>();
+    public static List<SsidInfo> listSsidInfo() {
+        List<SsidInfo> ssidInfos = new ArrayList<>();
         String cmd = Command.SHOW_NETWORKS;
         List<String> results = execute(cmd, null);
         if (results != null && results.size() > 0) {
             for (String result : results) {
-                System.out.println(result);
+                if (StringUtils.contains(result, "SSID") && !StringUtils.contains(result, "BSSID")) {
+                    SsidInfo ssidInfo = new SsidInfo();
+                    ssidInfo
+                }
+
             }
-            // todo 整合信息
         }
-        return wiFiInfos;
+        return ssidInfos;
     }
 
     /**
@@ -107,5 +112,28 @@ public class WifiUtils {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public void run(char[] charSource, int maxLength) {
+
+        //计数器，多线程时可以对其加锁，当然得先转换成Integer类型。
+        int counter = 0;
+        StringBuilder buider = new StringBuilder();
+        while (buider.toString().length() <= maxLength) {
+            buider = new StringBuilder(maxLength * 2);
+            int _counter = counter;
+            //10进制转换成26进制
+            while (_counter >= charSource.length) {
+                //获得低位
+                buider.insert(0, charSource[_counter % charSource.length]);
+                _counter = _counter / charSource.length;
+                //精髓所在，处理进制体系中只有10没有01的问题，在穷举里面是可以存在01的
+                _counter--;
+            }
+            //最高位
+            buider.insert(0, charSource[_counter]);
+            counter++;
+
+        }
     }
 }

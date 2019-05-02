@@ -1,9 +1,5 @@
 package wifi.dictionary;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-
 /**
  * 利用Java实现字母(大小写)+数字+字符的穷举，可用于密码爆破等
  * 如果需要其他的字符，直接接到字符数组中即可
@@ -56,24 +52,15 @@ public class DictionaryGenerator {
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        //long beginMillis = System.currentTimeMillis();
-        //System.out.println(beginMillis);//开始时间
-        //generate(5);                    //以最大长度为50测试
-        //long endMillis = System.currentTimeMillis();
-        //System.out.println(endMillis);//结束时间
-        //System.out.println(endMillis - beginMillis);//总耗时，毫秒
-//BufferedReader是可以按行读取文件
-        FileInputStream inputStream = new FileInputStream("E:\\BaiduNetdiskDownload\\jikefeng密码字典\\jikefeng.txt");
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+    /**
+     * 穷举打印输出，可以将打印输出的文件形成字典
+     * <p>
+     * 密码可能会包含的字符集合
+     *
+     * @param maxLength：生成的字符串的最大长度
+     */
+    public static void generate(char[] charSource, int maxLength) {
 
-        String str = null;
-        while ((str = bufferedReader.readLine()) != null) {
-            System.out.println(str);
-        }
-
-        //close
-        inputStream.close();
-        bufferedReader.close();
     }
+
 }

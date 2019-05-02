@@ -1,9 +1,14 @@
 package wifi;
 
 public class SsidInfo {
-    private String SSID_NAME;//WiFi名称
+    private String ssidName;//WiFi名称
 
-    private String AUTH_TYPE;//WiFi加密方式
+    public String getSsidName() {
+        return ssidName;
+    }
 
-    private String PASSWORD;//WiFi密码
+    public void setSsidName(String ssidName) {
+        this.ssidName = ssidName;
+    }
+
 }
